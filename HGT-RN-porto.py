@@ -316,8 +316,6 @@ if __name__ == '__main__':
     parser.add_argument('--edge_index', default='./Porto-data/edge_list_train.npy')
     parser.add_argument('--edge_weight',default='./Porto-data/edge_weight_train_min-max-porto.npy')
     parser.add_argument('--edge_r',default='./Porto-data/edge_r_train.npy')
-    parser.add_argument('--edge_r',default='./Porto-data/edge_r_train.npy')
-    parser.add_argument('--edge_r',default='./Porto-data/edge_r_train.npy')
 
     #  probability transition vector
     parser.add_argument('--transition_probability_map',
