@@ -30,6 +30,13 @@ def get_onehot_neighbor(lis,num):
 
     return res
 
+def get_onehot(lis,num):
+    # onehot_encoded = []
+    res = torch.zeros((lis.shape[0], num)).to(device=args.device)
+    for i in range(lis.shape[0]):
+        res[i][lis[i]] = 1
+
+    return res
 
 def train(args):
 
@@ -39,16 +46,18 @@ def train(args):
 
     ## build Global Graph
 
-    ## load Weighted-Directional GAT data ##
+    ## load Weighted-Directional GAT data : X , edge_index,edge_weight, direction_node2node  ##
     node_onehot = np.load(args.node_X,allow_pickle=True)
     edge_index_road = np.load(args.edge_index,allow_pickle=True)
     edge_weight_road = np.load(args.edge_weight,allow_pickle=True)
     edge_r_road = np.load(args.edge_r,allow_pickle=True)
 
+    # to tensor
     node_onehot = torch.tensor(node_onehot,dtype=torch.float).to(device=args.device)
     edge_index_road = torch.tensor(edge_index_road).to(args.device)
     edge_weight_road = torch.tensor(edge_weight_road,dtype=torch.float).to(args.device)
-    edge_r_road_onehot = get_onehot_neighbor(edge_r_road,8)
+    # to one-hot vector
+    edge_r_road_onehot = get_onehot(edge_r_road,8)
     edge_r_road_onehot = torch.tensor(edge_r_road_onehot,dtype=torch.float).to(args.device)
 
     '''
