@@ -29,7 +29,14 @@ def get_onehot_neighbor(lis,num):
         res[i][lis[i]] = 1
 
     return res
+    
+def get_onehot(lis,num):
+    # onehot_encoded = []
+    res = torch.zeros((lis.shape[0], num)).to(device="cuda")
+    for i in range(lis.shape[0]):
+        res[i][lis[i]] = 1
 
+    return res
 
 def train(args):
 
@@ -48,7 +55,7 @@ def train(args):
     node_onehot = torch.tensor(node_onehot,dtype=torch.float).to(device="cuda")
     edge_index_road = torch.tensor(edge_index_road).to("cuda")
     edge_weight_road = torch.tensor(edge_weight_road,dtype=torch.float).to("cuda")
-    edge_r_road_onehot = get_onehot_neighbor(edge_r_road,8)
+    edge_r_road_onehot = get_onehot(edge_r_road,8)
     edge_r_road_onehot = torch.tensor(edge_r_road_onehot,dtype=torch.float).to("cuda")
 
     '''
