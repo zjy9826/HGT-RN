@@ -46,15 +46,17 @@ def train(args):
 
     ## build Global Graph
 
-    ## load Weighted-Directional GAT data ##
+    ## load Weighted-Directional GAT data : X , edge_index,edge_weight, direction_node2node ##
     node_onehot = np.load(args.node_X, allow_pickle=True)
     edge_index_road = np.load(args.edge_index, allow_pickle=True)
     edge_weight_road = np.load(args.edge_weight, allow_pickle=True)
     edge_r_road = np.load(args.edge_r, allow_pickle=True)
 
+    # to tensor
     node_onehot = torch.tensor(node_onehot,dtype=torch.float).to(device="cuda")
     edge_index_road = torch.tensor(edge_index_road).to("cuda")
     edge_weight_road = torch.tensor(edge_weight_road,dtype=torch.float).to("cuda")
+    # to one-hot vector
     edge_r_road_onehot = get_onehot(edge_r_road,8)
     edge_r_road_onehot = torch.tensor(edge_r_road_onehot,dtype=torch.float).to("cuda")
 
