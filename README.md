@@ -1,3 +1,3 @@
 # HGT-RN
 
-## Dual-level Traffic Flow Graph Enhanced Transformer for Trajectory Prediction under Road Network Constraints
+## A Dual-Level Graph Attention Network and Transformer for Enhanced Trajectory Prediction under Road Network Constraints
