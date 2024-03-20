@@ -211,7 +211,7 @@ class hgt_rn(nn.Module):
             # print(f"r_traj:{r_traj}")
             # print(f"taxiid:{taxiid}")
 
-            # 获取倒数第5个
+            # 获取倒数第1个
             batch_pre_node.append(node_traj[-1])
             # 从 p map 中找 概率
             batch_seq_lens.append(node_traj[-1])
