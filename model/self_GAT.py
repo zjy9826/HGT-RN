@@ -148,7 +148,7 @@ class W_D_GAT(nn.Module):
         x = self.out_att(x, edge_index,edge_weight_road,edge_r)
         x = F.elu(x)
         # res_att_map = self.Eto8(res_att_map)
-        return F.log_softmax(x, dim=1)
+        return x
 
 
 
